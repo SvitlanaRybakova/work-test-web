@@ -1,4 +1,5 @@
 import CategorySlider from '@/components/categorySlider/CategorySlider';
+import MobileFilter from '@/components/filter/MobileFilter';
 import Sidebar from '@/components/filter/Sidebar';
 import MobileOnboarding from '@/components/MobileOnboarding';
 import Navbar from '@/components/Navbar';
@@ -12,6 +13,7 @@ export default function Home() {
       <div className="flex">
         <Sidebar />
         <main className="flex-1 min-w-0 px-6 md:px-10">
+          <MobileFilter />
           <CategorySlider />
           <RestaurantGrid />
         </main>

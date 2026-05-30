@@ -9,7 +9,7 @@ import { useFilterParams } from '@/app/hooks/useFilterParams';
 import { DELIVERY_OPTIONS, PRICE_OPTIONS } from '@/library/constants';
 
 import FilterCard from './FilterCard';
-import FilterSkeleton from "../categorySlider/Skeleton"
+import FilterSkeleton from '../categorySlider/Skeleton';
 
 const Sidebar = () => {
   const { activeCategories, activeDeliveries, activePrices, handleToggle } =
@@ -42,7 +42,7 @@ const Sidebar = () => {
           <h3 className="mb-3 font-semibold text-xs text-gray-400 uppercase tracking-wider">
             Food Category
           </h3>
-           <div className="flex flex-col gap-2 items-start w-full">
+          <div className="flex flex-col gap-2 items-start w-full">
             <FilterSkeleton count={7} variant="list" />
           </div>
         </div>

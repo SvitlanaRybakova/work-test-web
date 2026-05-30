@@ -3,6 +3,7 @@
 import { useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useRestaurants } from '@/app/hooks/useRestaurants';
+import ErrorState from '../ErrorState';
 
 const RestaurantGrid = () => {
   const searchParams = useSearchParams();
@@ -37,7 +38,7 @@ const RestaurantGrid = () => {
   } = useRestaurants(filters);
 
   if (isError) {
-    return <div>Unable to load restaurants</div>;
+    return <ErrorState title="Unable to load restaurants" onRetry={refetch} />;
   }
 
   return (

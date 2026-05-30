@@ -1,7 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { fetcher } from '@/library/api'; 
+import { fetcher } from '@/library/api';
 import { Filter } from '@/types';
 import { useFilterParams } from '@/app/hooks/useFilterParams';
 import CategoryCard from './CategoryCard';
@@ -9,7 +9,6 @@ import CategorySkeleton from './Skeleton';
 
 const CategorySlider = () => {
   const { activeCategories, handleToggle } = useFilterParams();
-
 
   const { data: filtersData, isLoading: isFiltersLoading } = useQuery({
     queryKey: ['filters'],
@@ -32,7 +31,7 @@ const CategorySlider = () => {
               <CategoryCard
                 filter={filter}
                 isSelected={isSelected}
-                onClick={() => handleToggle('categories', filter.id)} 
+                onClick={() => handleToggle('categories', filter.id)}
               />
             </div>
           );

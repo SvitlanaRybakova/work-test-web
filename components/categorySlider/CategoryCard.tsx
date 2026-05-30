@@ -10,8 +10,7 @@ interface CategoryCardProps {
 
 const CategoryCard = ({ filter, isSelected, onClick }: CategoryCardProps) => {
   return (
-      <button
-        
+    <button
       onClick={onClick}
       className={clsx(
         'flex items-center justify-between',

@@ -1,4 +1,3 @@
-// schemas/onboarding.ts (или schemaTypes/onboarding.ts)
 export default {
   name: 'onboarding',
   title: 'Mobile Onboarding Screen',

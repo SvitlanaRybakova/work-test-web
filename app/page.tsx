@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import CategorySlider from '@/components/categorySlider/CategorySlider';
 import MobileFilter from '@/components/filter/MobileFilter';
 import Sidebar from '@/components/filter/Sidebar';
@@ -10,14 +11,16 @@ export default function Home() {
     <>
       <MobileOnboarding />
       <Navbar />
-      <div className="flex">
-        <Sidebar />
-        <main className="flex-1 min-w-0 px-6 md:px-10">
-          <MobileFilter />
-          <CategorySlider />
-          <RestaurantGrid />
-        </main>
-      </div>
+      <Suspense fallback={<></>}>
+        <div className="flex">
+          <Sidebar />
+          <main className="flex-1 min-w-0 px-6 md:px-10">
+            <MobileFilter />
+            <CategorySlider />
+            <RestaurantGrid />
+          </main>
+        </div>
+      </Suspense>
     </>
   );
 }

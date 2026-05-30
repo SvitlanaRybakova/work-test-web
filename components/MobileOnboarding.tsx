@@ -1,10 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import reactStringReplace from 'react-string-replace';
+
+import { useAppContent } from '@/app/hooks/useAppContent';
 import Navbar from './Navbar';
 
 const MobileOnboarding = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
+  const { data, isLoading } = useAppContent();
 
   useEffect(() => {
     const hasSeenOnboarding = localStorage.getItem('munchies_onboarding_seen');
@@ -13,36 +17,38 @@ const MobileOnboarding = () => {
     }
   }, []);
 
+  if (!isVisible || isLoading || !data?.onboarding) return null;
+  const { onboarding } = data;
+
   const handleContinue = () => {
     localStorage.setItem('munchies_onboarding_seen', 'true');
     setIsVisible(false);
   };
-
-  if (!isVisible) return null;
 
   return (
     <div className="fixed inset-0 bg-green-800 z-[9999] flex flex-col justify-between p-8 text-white select-none md:hidden animate-fadeIn">
       <Navbar variant="white" />
 
       <div className="flex flex-col mb-16">
-        {/* TODO: implement Sanity CMS */}
         <h1 className="text-5xl font-extrabold mb-4">
-          Treat <br /> yourself.
+          {reactStringReplace(onboarding.title, '{{br}}', (match, i) => (
+            <br key={i} />
+          ))}
         </h1>
-        {/* TODO: implement Sanity CMS */}
+
         <p className="text-sm font-normal text-white max-w-[280px] leading-relaxed tracking-wide">
-          Find the best restaurants in your city and get it delivered to your
-          place!
+          {reactStringReplace(onboarding.description, '{{br}}', (match, i) => (
+            <br key={i} />
+          ))}
         </p>
       </div>
 
       <div className="mb-4">
-        {/* TODO: implement Sanity CMS */}
         <button
           onClick={handleContinue}
           className="w-full py-3.5 bg-transparent border border-white rounded-xl text-base font-bold text-white hover:bg-white/10 active:bg-white/20 transition duration-150 cursor-pointer text-center"
         >
-          Continue
+          {onboarding.buttonText}
         </button>
       </div>
     </div>

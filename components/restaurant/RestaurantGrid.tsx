@@ -3,11 +3,14 @@
 import { useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useRestaurants } from '@/app/hooks/useRestaurants';
+import { useAppContent } from '@/app/hooks/useAppContent';
+
 import ErrorState from '../ErrorState';
 import RestaurantCard from './RestaurantCard';
 
 const RestaurantGrid = () => {
   const searchParams = useSearchParams();
+  const { data: sanity } = useAppContent();
 
   const activeCategories = useMemo(
     () => searchParams.get('categories')?.split(',').filter(Boolean) || [],
@@ -44,9 +47,8 @@ const RestaurantGrid = () => {
 
   return (
     <>
-      {/* TODO: implement SanityCMS */}
       <h1 className="text-xl md:text-4xl font-normal text-black tracking-tight mb-5 md:mb-8">
-        Restaurants
+        {sanity?.settings?.mainH1 || 'Restaurants'}
       </h1>
       <div className="flex flex-wrap gap-2">
         {isLoading

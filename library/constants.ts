@@ -1,4 +1,3 @@
-// @/app/utils/constants.ts
 export const DELIVERY_OPTIONS = [
   { label: '0-10 min', id: '0-10' },
   { label: '10-30 min', id: '10-30' },

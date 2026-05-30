@@ -1,11 +1,17 @@
+'use client';
 import clsx from 'clsx';
+import { useAppContent } from '@/app/hooks/useAppContent';
 
 interface NavbarProps {
   variant?: 'black' | 'white';
 }
 
 const Navbar = ({ variant = 'black' }: NavbarProps) => {
+  const { data } = useAppContent();
   const isWhite = variant === 'white';
+  const logoUrl = isWhite
+    ? data?.settings?.logoWhiteUrl
+    : data?.settings?.logoBlackUrl;
 
   return (
     <nav
@@ -22,9 +28,10 @@ const Navbar = ({ variant = 'black' }: NavbarProps) => {
       >
         <img
           src={
-            isWhite
+            logoUrl ||
+            (isWhite
               ? '/images/logo/logo-white.svg'
-              : '/images/logo/logo-black.svg'
+              : '/images/logo/logo-black.svg')
           }
           alt="Munchies Logo"
           className="h-6 md:h-10 w-auto object-contain"

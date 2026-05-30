@@ -28,7 +28,7 @@ const FilterCard = ({
   }[variant];
 
   return (
-    <div className={clsx('cursor-pointer mb-8 last:mb-0', className)}>
+    <div className={clsx(' mb-8 last:mb-0', className)}>
       <h3
         className={clsx(
           'mb-3',
@@ -47,7 +47,7 @@ const FilterCard = ({
               key={item.id}
               onClick={() => onToggle(item.id)}
               className={clsx(
-                'px-3 py-2',
+                'cursor-pointer px-3 py-2',
                 'text-sm font-medium',
                 'border rounded-lg border-thin',
                 'transition-all duration-150  select-none',

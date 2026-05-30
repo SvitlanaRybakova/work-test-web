@@ -9,9 +9,13 @@ export default function Home() {
     <>
       <MobileOnboarding />
       <Navbar />
-      <CategorySlider />
-      <Sidebar />
-      <RestaurantGrid />
+      <div className="flex">
+        <Sidebar />
+        <main className="flex-1 min-w-0 px-6 md:px-10">
+          <CategorySlider />
+          <RestaurantGrid />
+        </main>
+      </div>
     </>
   );
 }

@@ -43,6 +43,9 @@ const RestaurantGrid = () => {
 
   return (
     <>
+      <h1 className="text-xl md:text-4xl font-normal text-black tracking-tight mb-5 md:mb-8">
+        Restaurants
+      </h1>
       <div className="flex flex-wrap gap-2">
         {isLoading
           ? Array.from({ length: 6 }).map((_, i) => <div>loading...</div>)

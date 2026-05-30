@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useRestaurants } from '@/app/hooks/useRestaurants';
 import ErrorState from '../ErrorState';
+import RestaurantCard from './RestaurantCard';
 
 const RestaurantGrid = () => {
   const searchParams = useSearchParams();
@@ -43,18 +44,17 @@ const RestaurantGrid = () => {
 
   return (
     <>
+      {/* TODO: implement SanityCMS */}
       <h1 className="text-xl md:text-4xl font-normal text-black tracking-tight mb-5 md:mb-8">
         Restaurants
       </h1>
       <div className="flex flex-wrap gap-2">
         {isLoading
-          ? Array.from({ length: 6 }).map((_, i) => <div>loading...</div>)
-          : restaurants?.map((restaurant: any) => (
-              <div key={restaurant.id}>
-                restaurant: {restaurant.name} -{' '}
-                {restaurant.isOpen ? 'Open' : 'Closed'} - Price:{' '}
-                {restaurant.priceRange}
-              </div>
+          ? Array.from({ length: 6 }).map((_, i) => (
+              <RestaurantCard key={i} isLoading={true} item={{} as any} />
+            ))
+          : restaurants?.map((item) => (
+              <RestaurantCard key={item.id} item={item} />
             ))}
       </div>
 
